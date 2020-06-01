@@ -193,6 +193,26 @@ RGBへ自動変換してくれるサイトは外部に沢山あると思いま�
 	margin-top: -5px;
 }
 
+div.mybox_2 {
+	padding: 1em 1.5em;
+	margin: 2em 0;
+	background-color: #fff4ea;
+	box-shadow: 0 0 0 8px #fff4ea;
+	border: 2px dashed #ffbf7f;
+	border-radius: 8px;
+	color: #000000;
+}
+
+div.mybox_2 li{
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+div.mybox_2 li span{
+	font-weight: bold;
+}
+
 /*Galleryページ
 ---------------------------------------------------------------------------*/
 /*ボックス共通設定*/
