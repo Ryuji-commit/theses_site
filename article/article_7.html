@@ -59,7 +59,14 @@
 							<li><span>2020/7/5</span><br>
 								静的ファイルを正しく扱えるようになり、とりあえず動くようにはなった。しかし、mediaファイルやHeroku Redisとの連携が
 								終わっておらず、それらの設定が急務。また、不安定でよく500エラーになるため、原因を調査中。<br>
-								<a href="http://stumee.herokuapp.com/home/">StuMee Home</a>
+								<a href="https://stumee.herokuapp.com/home/">StuMee Home</a>
+							</li>
+
+							<li><span>2020/7/6</span><br>
+								500エラーを吐くのは、どうやらHeroku Postgresが20コネクション以上を受け付けないからだと判明したため、
+								<a href="https://github.com/django/channels/issues/871">こちらのissue</a>を参考にし、dj_database_url.config()と記述。<br>
+								しかし、ほぼ同時に20アクセス以上あった時はもしかすると500エラーが起こりうるかもしれない。Herokuの無料枠ではやはり限界がありそう。<br>
+								また、redisを扱えるようにするためにデビットカードを作成しに行ったが、届くのは2週間後だそう。
 							</li>
 						</ul>
 					</div>
