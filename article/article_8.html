@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>7/3から7/9までの進捗状況</title>
+	<title>7/10から7/16までの進捗状況</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="2020/7/3から7/9までの進捗状況">
+	<meta name="description" content="2020/7/10から7/16までの進捗状況">
 	<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
 	<link rel="stylesheet" href="../css/style.css">
 	<script type="text/javascript" src="js/openclose.js"></script>
@@ -46,7 +46,7 @@
 		<div id="contents">
 
 			<div id="main">
-				<h2>7/3 ~ 7/9 間の進捗</h2>
+				<h2>7/10 ~ 7/16 間の進捗</h2>
 				<div>
 					<h3>StuMee Studyページの開発</h3>
 					<div class="mybox_2">
@@ -54,6 +54,22 @@
 							<li><span>2020/7/11</span><br>
 								minioがとりあえず動くようになったが、まだ”I/O operation on closed file.”　とのエラーメッセージがでる。
 								また、データの永続化がたぶんできていない。
+							</li>
+
+							<li><span>2020/7/13</span><br>
+								ポートフォワードについて学習。これを用いて、サーバ上のStuMeeにローカルからアクセスできるのではないかと思い、
+								方法について調べる。<br>
+								また、minioの永続化及び連携が完了。
+							</li>
+
+							<li><span>2020/7/14</span><br>
+								ポートフォワードを用いてローカルからアクセスすることに成功。ただし、ソースコードの変更がイメージに反映されていないのか、
+								サーバ上のStuMeeとminioとの連携が上手くいかない。<br>
+								上記の原因を特定できた。どうやら、ローカルの方でdocker-compose buildを行ってからimageをpushし、サーバ上でpullを行うことで
+								ソースコードの変更を反映させることができそう。ローカルではディレクトリをマウントしているためわざわざbuildを行わなくても
+								コンテナに反映させることができるが、イメージはそうもいかないのか。エンドポイントurlを変更することで動きそう。<br>
+								以降、安定版はstableのタグ、最新版はlatestのタグでイメージを管理する。サーバではstableを用いる。タグは増やすかもしれないが、基本は
+								これで行こうと思う。
 							</li>
 						</ul>
 					</div>
@@ -63,8 +79,9 @@
 					<h3>個人活動・余談</h3>
 					<div class="mybox_2">
 						<ul>
-							<li><span>2020/7/6</span><br>
-								
+							<li><span>2020/7/14</span><br>
+								オライリーの「アルゴリズム クイックリファレンス」を読んでアルゴリズムについて学習。動的計画法や基本的なソートに関して復習した。<br>
+								また、サーバやDockerについての学習も行っている。
 							</li>
 						</ul>
 					</div>
