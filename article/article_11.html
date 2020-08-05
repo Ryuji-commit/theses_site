@@ -51,10 +51,21 @@
 					<h3>StuMee Studyページの開発</h3>
 					<div class="mybox_2">
 						<ul>
-							<li><span>2020/7/22~24</span><br>
+							<li><span>2020/8/1~2</span><br>
 								<a href="https://ymir.eng.kagawa-u.ac.jp/stumee/home/">https://ymir.eng.kagawa-u.ac.jp/stumee/home/</a>にアクセスすることで
 								stumeeにアクセスできるようになった。ただし、URLの問題で他のページに遷移しにくい。<br>
 								また、minioへのアクセスができていない。
+							</li>
+
+							<li><span>2020/8/4</span><br>
+								URLの解決方法について調査。以下のような方法があることが分かった。<br>
+								1. 全てのパスについてロケーションを設定する。(/study/や/meeting/についてもロケーションを設定する。)<br>
+								2. StuMee自体のパスを書き換える。<br>
+								3. ”rewrite last”を用いて、URLを書き換えた後に設定している/stumee/ロケーションにマッチさせる。<br>
+								4. ドメインやサブドメインを用いて、サーバーネームにマッチするとstumeeに飛ばすようにする。<br>
+								5. sub_filterやsubs_filterを用いてStuMee側のURLを書き換える。<br>
+
+								自分や研究室のサーバーにとって良い方法を選び、解決したい。また、他により良い方法がないか調査する。
 							</li>
 						</ul>
 					</div>
@@ -64,23 +75,7 @@
 					<h3>個人活動・余談</h3>
 					<div class="mybox_2">
 						<ul>
-							<li><span>2020/7/24</span><br>
-								アルゴリズムクイックリファレンスのソートの章までを学習完了。<br>
-								次は探索の章を学習しようと思う。
-							</li>
-
-							<li><span>2020/7/25</span><br>
-								二分探索等を学習。<br>
-								Azureの学習も行う。最近生活バランスが崩れつつあるので修正しなければならない。
-							</li>
-
-							<li><span>2020/7/27</span><br>
-								内定者オリエンテーションに参加。
-							</li>
-
-							<li><span>2020/7/31</span><br>
-								Laravelの学習もしてみたいです。
-							</li>
+							
 						</ul>
 					</div>
 				</div>
