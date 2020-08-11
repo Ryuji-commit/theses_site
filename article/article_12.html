@@ -89,8 +89,9 @@
 							<li><span>2020/8/11</span><br>
 								<a href="https://ymir.eng.kagawa-u.ac.jp/minio/">https://ymir.eng.kagawa-u.ac.jp/minio/stumeestorage/</a>に
 								アクセスすることで無事minioにアクセスできるようになった。ストレージをリバースプロキシするのはあまり気が進まないが、仕方がない。<br>
-								ただし、どうやら"minio"prefixが悪さをしているようで、"minio"ストレージを見に行ってしまっている。<br>
-								<a href="https://github.com/IBM/ibm-cos-sdk-js/issues/59">(参考)近い現象が起きていたissues</a>
+								ただし、どうやら"minio"prefixが悪さをしているようで、"minio"ストレージを見に行ってしまっている。
+								<a href="https://github.com/IBM/ibm-cos-sdk-js/issues/59">(参考)近い現象が起きていたissues</a><br>
+								もしくは、AWSの署名ヘッダとリクエストヘッダが違うことが原因かもしれない。
 							</li>
 						</ul>
 					</div>
