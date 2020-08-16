@@ -105,6 +105,14 @@
 								<a href="https://docs.aws.amazon.com/ja_jp/AmazonS3/latest/dev/RESTAuthentication.html">参考URL</a>
 								<a href="https://dev.classmethod.jp/articles/s3-cors-upload/">参考2</a>
 							</li>
+
+							<li><span>2020/8/16</span><br>
+								昨日の参考ページから、おそらくパスが違うことによりsignatureの計算結果が違っているのであると考え、
+								nginxの設定ファイルおよびsetting.pyを書き直すことで、無事minioとの連携が成功した。<br>
+								残る問題は、googleのoauthの認証URLが"133.92.145.23:8080・・・"のようになってしまっており、
+								それを書き換える必要があるということである。これは、social_djangoライブラリの問題であると考えられるので、
+								書き換えのための設定がないか探してみる。もしくは、いったんnginxで受けて書き換える…？
+							</li>
 						</ul>
 					</div>
 				</div>
