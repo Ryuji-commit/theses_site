@@ -52,8 +52,10 @@
 					<div class="mybox_2">
 						<ul>
 							<li><span>2020/8/7</span><br>
-								恐らくだが、<strong>HttpRequest.get_host()</strong>を用いてアクセスされているhostを得ている気がする。<br>
-								<a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpRequest.get_host">参考</a>
+								恐らくだが、<strong>HttpRequest.get_host()</strong>を用いてアクセスされているhostを得ている気がする。
+								<a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpRequest.get_host">参考</a><br>
+								どうやら、<strong>HTTP_X_FORWARDED_HOST</strong>の値を拾っているらしいので、nginx側で設定したところ上手く動いた。<br>
+								その他、セキュリティの問題から設定ファイルを修正。
 							</li>
 						</ul>
 					</div>
