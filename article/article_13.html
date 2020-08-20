@@ -55,6 +55,8 @@
 								恐らくだが、<strong>HttpRequest.get_host()</strong>を用いてアクセスされているhostを得ている気がする。
 								<a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpRequest.get_host">参考</a><br>
 								どうやら、<strong>HTTP_X_FORWARDED_HOST</strong>の値を拾っているらしいので、nginx側で設定したところ上手く動いた。<br>
+								また、minioにPOST出来ない問題はどうやら署名の不一致であることが分かった。ローカルの方では問題がないため、Hostが違うからなのかもしれない。
+								ローカルの方でもログを監視してみるつもりだ。
 								その他、セキュリティの問題から設定ファイルを修正。
 							</li>
 						</ul>
