@@ -212,13 +212,15 @@
 							15. <code>docker-compose run web ./manage.py collectstatic</code>を実行する。<br>
 							16. サービスにアクセスして動作を確認。
 						</span>
+					</p>
 
+					<p>
 						<strong class="color1">minIOログ監視(ローカル)</strong><br>
 						<span>
-							0. $ docker pull minio/mc (pullしていない場合)
-							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc
-							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key
-							3. # mc admin trace -v minio
+							0. $ docker pull minio/mc (pullしていない場合) <br>
+							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc <br>
+							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key <br>
+							3. # mc admin trace -v minio <br>
 						</span>
 					</p>
 
