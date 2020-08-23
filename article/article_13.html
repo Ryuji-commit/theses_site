@@ -51,13 +51,20 @@
 					<h3>StuMee デプロイ</h3>
 					<div class="mybox_2">
 						<ul>
-							<li><span>2020/8/7</span><br>
+							<li><span>2020/8/21</span><br>
 								恐らくだが、<strong>HttpRequest.get_host()</strong>を用いてアクセスされているhostを得ている気がする。
 								<a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpRequest.get_host">参考</a><br>
 								どうやら、<strong>HTTP_X_FORWARDED_HOST</strong>の値を拾っているらしいので、nginx側で設定したところ上手く動いた。<br>
 								また、minioにPOST出来ない問題はどうやら署名の不一致であることが分かった。ローカルの方では問題がないため、Hostが違うからなのかもしれない。
 								ローカルの方でもログを監視してみるつもりだ。
 								その他、セキュリティの問題から設定ファイルを修正。
+
+								"X-Amz-Content-Sha256"が原因だと思われる。
+							</li>
+
+							<li><span>2020/8/23</span><br>
+								"X-Amz-Content-Sha256"が原因だと思われる。UNSIGNED-PAYLOADとなっているが、ローカルでは暗号化された文字列が渡されていた。<br>
+								ローカルでのminIO監視コマンドの導入手順を記述。
 							</li>
 						</ul>
 					</div>
