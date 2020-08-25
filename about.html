@@ -197,20 +197,22 @@
 						<span>
 							1. ローカルのsetting.pyにて<code>Debug = False</code>に設定。<br>
 							2. ローカルの方で、<code>docker-compose run web ./manage.py collectstatic</code>を実行し、動作を確認<br>
-							3. ローカルのsetting.pyにてEndpoint URLを本番環境のminIOのアドレスを指すように変更。<br>
-							4. ローカルにて<code>docker-compose down</code>を実行し、稼働中のコンテナを終了<br>
-							5. ローカルにて<code>docker-compose build</code>を実行し、コードをimage内に含めるようにする<br>
-							6. ローカルにて<code>docker-compose up -d</code>を実行し、コンテナを作成。<br>
-							7. ローカルにて、docker commit を実行し、Docekr Hubにpushする用のimageを作成<br>
-							8. ローカルにて<code>docker push ryuusan/stumee_web:stable</code>を実行し、7で作成したimageをpushする。<br>
-							9. sshを用いて本番環境にアクセスする。<br>
-							10. stumeeディレクトリに移動。<br>
-							11. docker-compose.ymlファイルがあることを確認し、<code>docker pull ryuusan/stumee_web:stable</code>を実行。<br>
-							12. <code>docker-compose up -d</code>コマンドを実行する。<br>
-							13. <code>docker-compose start</code>コマンドを実行し、サービスを稼働させる。<br>
-							14. <code>docker-compose run web ./manage.py migrate</code>を実行する。<br>
-							15. <code>docker-compose run web ./manage.py collectstatic</code>を実行する。<br>
-							16. サービスにアクセスして動作を確認。
+							3. 必要な場合、ローカルの方で<code>docker-compose run web ./manage.py makemigrations</code>を実行。<br>
+							4. 必要な場合、ローカルの方で<code>docker-compose run web ./manage.py migrate</code>を実行。<br>
+							5. ローカルにて<code>docker-compose down</code>を実行し、稼働中のコンテナを終了<br>
+							6. ローカルにて<code>docker-compose build</code>を実行し、コードをimage内に含めるようにする<br>
+							7. ローカルにて<code>docker-compose up -d</code>を実行し、コンテナを作成。<br>
+							8. ローカルにて、docker commit を実行し、Docekr Hubにpushする用のimageを作成<br>
+							9. ローカルにて<code>docker push ryuusan/stumee_web:stable</code>を実行し、7で作成したimageをpushする。<br>
+							10. sshを用いて本番環境にアクセスする。<br>
+							11. stumeeディレクトリに移動。<br>
+							12. docker-compose.ymlファイルがあることを確認し、<code>docker pull ryuusan/stumee_web:stable</code>を実行。<br>
+							13. <code>docker-compose up -d</code>コマンドを実行する。<br>
+							14. <code>docker-compose start</code>コマンドを実行し、サービスを稼働させる。<br>
+							15. <code>docker-compose run web ./manage.py migrate</code>を実行する。<br>
+							16. <code>docker-compose run web ./manage.py collectstatic</code>を実行する。<br>
+							17. サービスにアクセスして動作を確認。<br><br>
+							追記. サーバの方でcollectstaticを行う場合は、Endpointを133.92.145…に指定すること。collectstatic後、ymir.eng…に変更し直す。
 						</span>
 					</p>
 
