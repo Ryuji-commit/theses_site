@@ -55,6 +55,13 @@
 								どうやらwoden →　ymirまでの間に"X-Amz-Content-Sha256"ヘッダがunsigned payloadになっている模様。
 								woden →　woden上のminioへのPUTは問題なく成功した。
 							</li>
+
+							<li><span>2020/8/28</span><br>
+								色々調べているうちに、aws signature version 4を用いており、https通信の場合、"X-Amz-Content-Sha256"ヘッダが
+								無条件にUNSIGNED PAYLOADに書き換えられる模様。(署名の必要がないから？) <br>
+								そこで、ベストな方法だとは思わないが、signature version 2を用いて、さらにクエリ文字列URLを使わないようにすることで
+								動くようになった。
+							</li>
 						</ul>
 					</div>
 				</div>
