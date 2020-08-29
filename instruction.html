@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>About</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="ここにサイト説明を入れます">
+	<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/openclose.js"></script>
+	<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+	<div id="container">
+
+		<header>
+			<h1 id="logo">About</h1>
+		</header>
+
+		<!--PC用（481px以上端末）メニュー-->
+		<nav id="menubar">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="gallery.html">progress</a></li>
+                <li><a href="link.html">Link</a></li>
+                <li><a href="instruction.html">Instruction</a></li>
+			</ul>
+		</nav>
+		<!--小さな端末用（800px以下端末）メニュー-->
+		<nav id="menubar-s">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="gallery.html">progress</a></li>
+                <li><a href="link.html">Link</a></li>
+                <li><a href="instruction.html">Instruction</a></li>
+			</ul>
+		</nav>
+
+		<div id="contents">
+
+			<div id="main">
+
+				<section id="about">
+
+                    <h2>資料</h2>
+
+					<h3>手順書(自分用)</h3>
+					<p>
+						<strong class="color1">本番環境のDocker image更新時</strong><br>
+						<span>
+							1. ローカルのsetting.pyにて<code>Debug = False</code>に設定。<br>
+							2. ローカルの方で、<code>docker-compose run web ./manage.py collectstatic</code>を実行し、動作を確認<br>
+							3. 必要な場合、ローカルの方で<code>docker-compose run web ./manage.py makemigrations</code>を実行。<br>
+							4. 必要な場合、ローカルの方で<code>docker-compose run web ./manage.py migrate</code>を実行。<br>
+							5. ローカルにて<code>docker-compose down</code>を実行し、稼働中のコンテナを終了<br>
+							6. ローカルにて<code>docker-compose build</code>を実行し、コードをimage内に含めるようにする<br>
+							7. ローカルにて<code>docker-compose up -d</code>を実行し、コンテナを作成。<br>
+							8. ローカルにて、docker commit を実行し、Docekr Hubにpushする用のimageを作成<br>
+							9. ローカルにて<code>docker push ryuusan/stumee_web:stable</code>を実行し、7で作成したimageをpushする。<br>
+							10. sshを用いて本番環境にアクセスする。<br>
+							11. stumeeディレクトリに移動。<br>
+							12. docker-compose.ymlファイルがあることを確認し、<code>docker pull ryuusan/stumee_web:stable</code>を実行。<br>
+							13. <code>docker-compose up -d</code>コマンドを実行する。<br>
+							14. <code>docker-compose start</code>コマンドを実行し、サービスを稼働させる。<br>
+							15. <code>docker-compose run web ./manage.py migrate</code>を実行する。<br>
+							16. <code>docker-compose run web ./manage.py collectstatic</code>を実行する。<br>
+							17. サービスにアクセスして動作を確認。<br><br>
+							追記. サーバの方でcollectstaticを行う場合は、Endpointを133.92.145…に指定すること。collectstatic後、ymir.eng…に変更し直す。
+						</span>
+					</p>
+
+					<p>
+						<strong class="color1">minIOログ監視(ローカル)</strong><br>
+						<span>
+							0. $ docker pull minio/mc (pullしていない場合) <br>
+							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc <br>
+							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key <br>
+							3. # mc admin trace -v minio <br>
+						</span>
+					</p>
+
+					<h3>手順書(研究室用)</h3>
+					<p>
+						<strong class="color1">nginx設定ファイル</strong><br>
+						<span>
+							0. $ docker pull minio/mc (pullしていない場合) <br>
+							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc <br>
+							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key <br>
+							3. # mc admin trace -v minio <br>
+						</span>
+					</p>
+
+
+				</section>
+
+			</div>
+			<!--/main-->
+
+			<div id="sub">
+
+				<nav class="box1">
+					<h2>勉強中リンク</h2>
+					<ul class="submenu mb10">
+						<li><a href="#">主要リンクサンプル</a></li>
+						<li><a href="#">主要リンクサンプル</a></li>
+						<li><a href="#">主要リンクサンプル</a></li>
+					</ul>
+				</nav>
+
+				<div class="box1">
+					<h2>ポートフォリオ</h2>
+					<ul class="submenu mb10">
+						<li><a href="https://lasaisonbakery.com/">La.saisonホームぺージ</a></li>
+						<li><a href="https://github.com/Ryuji-commit/AtCoder-Python">AtCoder回答(GitHub)</a></li>
+						<li><a href="https://github.com/Ryuji-commit/StuMee">StuMee コード(GitHub)</a></li>		
+					</ul>
+				</div>
+				<!--/box1-->
+
+				<aside>
+					<h2>参考論文</h2>
+					<ul class="submenu">
+						<li><a href="#">関連情報リンク</a></li>
+						<li><a href="#">関連情報リンク</a></li>
+						<li><a href="#">関連情報リンク</a></li>
+					</ul>
+				</aside>
+
+			</div>
+			<!--/sub-->
+
+			<p id="pagetop"><a href="#">↑ </a></p>
+
+		</div>
+		<!--/contents-->
+
+		<footer>
+			<small>Copyright&copy; <a href="index.html">Sample Site</a> All Rights Reserved.</small>
+			<span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
+		</footer>
+
+	</div>
+	<!--/container-->
+
+	<!--スマホ用更新情報　480px以下-->
+	<script type="text/javascript">
+		if (OCwindowWidth() <= 480) {
+			open_close("newinfo_hdr", "newinfo");
+		}
+	</script>
+</body>
+
+</html>

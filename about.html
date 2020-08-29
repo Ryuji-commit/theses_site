@@ -31,15 +31,17 @@
 				<li><a href="about.html">About</a></li>
 				<li><a href="gallery.html">progress</a></li>
 				<li><a href="link.html">Link</a></li>
+				<li><a href="instruction.html">Instruction</a></li>
 			</ul>
 		</nav>
 		<!--小さな端末用（800px以下端末）メニュー-->
 		<nav id="menubar-s">
 			<ul>
 				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About me</a></li>
+				<li><a href="about.html">About</a></li>
 				<li><a href="gallery.html">progress</a></li>
 				<li><a href="link.html">Link</a></li>
+				<li><a href="instruction.html">Instruction</a></li>
 			</ul>
 		</nav>
 
@@ -53,8 +55,7 @@
 
 					<h3>自己紹介</h3>
 					<p>
-						情報工学を専攻する大学4年生。プログラミングはもはや半分趣味の領域。
-						あとコーディングも好き。<br>
+						情報工学を専攻する大学4年生。<br>
 						アルゴリズムが弱弱なので、最近はAtCoderの過去問も解いて学習しています。
 					</p>
 
@@ -67,8 +68,7 @@
 
 					<h3>StuMeeについて</h3>
 					<p>
-						StuMeeは「Study Meeting」の略であり、学習者同士の交流の場や質問をしやすい環境を
-						設けることで、学習の敷居を低くし、挫折する学習者を減らすことを目標としています。
+						StuMeeは「Study ＆ Meeting」の略であり、オンライン授業支援システムです。
 					</p>
 
 				</section>
@@ -157,8 +157,7 @@
 						<span>
 							掲示板のようなものを作成。ユーザは誰でもスレッドを作成でき、コメント、いいね！ができる。<br>
 							スレッドはいいね順や日付順などで並び替えられ、コメントはいいね順に並び替えられる。<br>
-							TA以上の権限を持つものであれば、スレッドをPickすることができ、Pickされたスレッドは
-							一番上に並ぶようになる。<br>
+							TA以上の権限を持つものであれば、スレッドをPickすることができ、Pickされたスレッドは一番上に並ぶようになる。<br>
 							いいね機能はリダイレクトではなく、Ajaxを用いて非同期処理を行っている。
 						</span>
 					</p>
@@ -225,6 +224,18 @@
 							3. # mc admin trace -v minio <br>
 						</span>
 					</p>
+
+					<h3>手順書(研究室用)</h3>
+					<p>
+						<strong class="color1">nginx設定ファイル</strong><br>
+						<span>
+							0. $ docker pull minio/mc (pullしていない場合) <br>
+							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc <br>
+							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key <br>
+							3. # mc admin trace -v minio <br>
+						</span>
+					</p>
+
 
 				</section>
 
