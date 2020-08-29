@@ -68,7 +68,8 @@
 
 					<h3>StuMeeについて</h3>
 					<p>
-						StuMeeは「Study ＆ Meeting」の略であり、オンライン授業支援システムです。
+						StuMeeは「Study ＆ Meeting」の略であり、オンライン授業支援システムです。<br>
+						<a href="https://ymir.eng.kagawa-u.ac.jp/stumee/home/">StuMee Topページ</a>
 					</p>
 
 				</section>
@@ -190,52 +191,21 @@
 						</span>
 					</p>
 
-					<h3>手順書(自分用)</h3>
+					<h3>実行環境</h3>
 					<p>
-						<strong class="color1">本番環境のDocker image更新時</strong><br>
+						<strong class="color1">本番環境</strong><br>
 						<span>
-							1. ローカルのsetting.pyにて<code>Debug = False</code>に設定。<br>
-							2. ローカルの方で、<code>docker-compose run web ./manage.py collectstatic</code>を実行し、動作を確認<br>
-							3. 必要な場合、ローカルの方で<code>docker-compose run web ./manage.py makemigrations</code>を実行。<br>
-							4. 必要な場合、ローカルの方で<code>docker-compose run web ./manage.py migrate</code>を実行。<br>
-							5. ローカルにて<code>docker-compose down</code>を実行し、稼働中のコンテナを終了<br>
-							6. ローカルにて<code>docker-compose build</code>を実行し、コードをimage内に含めるようにする<br>
-							7. ローカルにて<code>docker-compose up -d</code>を実行し、コンテナを作成。<br>
-							8. ローカルにて、docker commit を実行し、Docekr Hubにpushする用のimageを作成<br>
-							9. ローカルにて<code>docker push ryuusan/stumee_web:stable</code>を実行し、7で作成したimageをpushする。<br>
-							10. sshを用いて本番環境にアクセスする。<br>
-							11. stumeeディレクトリに移動。<br>
-							12. docker-compose.ymlファイルがあることを確認し、<code>docker pull ryuusan/stumee_web:stable</code>を実行。<br>
-							13. <code>docker-compose up -d</code>コマンドを実行する。<br>
-							14. <code>docker-compose start</code>コマンドを実行し、サービスを稼働させる。<br>
-							15. <code>docker-compose run web ./manage.py migrate</code>を実行する。<br>
-							16. <code>docker-compose run web ./manage.py collectstatic</code>を実行する。<br>
-							17. サービスにアクセスして動作を確認。<br><br>
-							追記. サーバの方でcollectstaticを行う場合は、Endpointを133.92.145…に指定すること。collectstatic後、ymir.eng…に変更し直す。
+							香川研究室のwodenサーバ上のDockerで動作しています。StuMeeのアプリ自体はDocker imageとしてDocker Hubからpullしてきています。<br>
+							また、アプリケーション以外にも、PostgreSQL、redis、minioが動作しています。<br>
+							woden上のアプリへは研究室内からしかアクセスできないため、同じ香川研究室のymirサーバのnginxを用いてStuMeeとminioにリバースプロキシさせることで、
+							アクセスを可能にしています。
+						</span>
+
+						<strong class="color1">開発環境</strong><br>
+						<span>
+							開発環境はDockerです。
 						</span>
 					</p>
-
-					<p>
-						<strong class="color1">minIOログ監視(ローカル)</strong><br>
-						<span>
-							0. $ docker pull minio/mc (pullしていない場合) <br>
-							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc <br>
-							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key <br>
-							3. # mc admin trace -v minio <br>
-						</span>
-					</p>
-
-					<h3>手順書(研究室用)</h3>
-					<p>
-						<strong class="color1">nginx設定ファイル</strong><br>
-						<span>
-							0. $ docker pull minio/mc (pullしていない場合) <br>
-							1. $ docker run --name mc -it --entrypoint=/bin/sh minio/mc <br>
-							2. # mc config host add minio http://minIO-URL:minIO-PORT  minio-key minio-secret-key <br>
-							3. # mc admin trace -v minio <br>
-						</span>
-					</p>
-
 
 				</section>
 
