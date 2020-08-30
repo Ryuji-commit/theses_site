@@ -99,7 +99,7 @@
 							<code>
 							server_name ymir.eng.kagawa-u.ac.jp;<br>
 							location /stumee/ {<br>
-								proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
 							} <br>
 							</code>
 							また、アプリURLの末尾にスラッシュをつけなかった場合は、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/stumee/home"に書き換えられます。
