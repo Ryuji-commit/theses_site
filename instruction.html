@@ -96,12 +96,12 @@
 							そのため、クライアントをwoden上で動作しているアプリにアクセスさせるために、ymirのNginxにてリバースプロキシの設定をすることが必要になります。
 							<figure><img src="images/introduction_reverse_proxy.png" alt="リバプロ説明"></figure>
 							設定ファイルは以下のように記述します。この場合、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/home"に書き換えられます。<br>
-							<code>
+							<pre><code>
 								server_name ymir.eng.kagawa-u.ac.jp
 								location /stumee/ {
 									proxy_pass http://133.92.145.23:8000/   # アプリURL
 								}
-							</code>
+							</code></pre>
 							また、アプリURLの末尾にスラッシュをつけなかった場合は、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/stumee/home"に書き換えられます。
 							このように、末尾にスラッシュをつけるか否かで動作が変わってくるので、注意してください。
 						</span>
