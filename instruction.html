@@ -100,12 +100,12 @@
 							
 							<p>設定ファイルは以下のように記述します。この場合、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/home"に書き換えられます。</p>
 							
-							<code class="prettyprint">
-								server_name ymir.eng.kagawa-u.ac.jp;<br>
-								location /stumee/ {<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
-								} <br>
-							</code>
+<pre class="prettyprint">
+server_name ymir.eng.kagawa-u.ac.jp;
+location /stumee/ {
+	proxy_pass http://133.92.145.23:8000/;   # アプリURL
+} 
+</pre>
 
 							また、アプリURLの末尾にスラッシュをつけなかった場合は、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/stumee/home"に書き換えられます。
 							このように、末尾にスラッシュをつけるか否かで動作が変わってくるので、注意してください。<br>
@@ -113,13 +113,13 @@
 							<strong class="color1">2. 応用設定</strong><br>
 							<p>上記の設定に加え、以下のように設定してすることでより複雑な動作をさせることができます。</p>
 
-							<code class="prettyprint">
-								location /stumee/ {<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host $host; # 説明1 <br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header X-Real-IP $remote_addr; #説明2 <br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
-								} 
-							</code>
+<pre class="prettyprint">
+location /stumee/ {
+	proxy_set_header Host $host; # 説明1
+	proxy_set_header X-Real-IP $remote_addr; #説明2
+	proxy_pass http://133.92.145.23:8000/;   # アプリURL
+} 
+</pre>
 
 							<p>
 								説明1 : <br>
@@ -138,27 +138,27 @@
 							
 							<p>また、以下のように設定することでwebsocketをリバースプロキシさせることができます。</p>
 
-							<code class="prettyprint"> 
-								location /ws/ {<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_http_version 1.1; #デフォルトはHTTP 1.0<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Upgrade $http_upgrade;<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Connection "upgrade";<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:9000/;   # アプリURL <br>
-								} 
-							</code>
+<pre class="prettyprint"> 
+location /ws/ {<br>
+	proxy_http_version 1.1; #デフォルトはHTTP 1.0<br>
+	proxy_set_header Upgrade $http_upgrade;<br>
+	proxy_set_header Connection "upgrade";<br>
+	proxy_pass http://133.92.145.23:9000/;   # アプリURL <br>
+} 
+</pre>
 
 							<strong class="color1">3. minIOをリバースプロキシさせる</strong><br>
 							<p>minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。</p>
 
 <pre class="prettyprint">
-	location /bucket-name/ {
-		proxy_set_header Host $proxy_host;
-		proxy_http_version 1.1;
-		proxy_set_header Connection "";
-		chunked_transfer_encoding off;
+location /bucket-name/ {
+	proxy_set_header Host $proxy_host;
+	proxy_http_version 1.1;
+	proxy_set_header Connection "";
+	chunked_transfer_encoding off;
 
-		proxy_pass http://133.92.145.23:9000/bucket-name/;
-	} 
+	proxy_pass http://133.92.145.23:9000/bucket-name/;
+} 
 </pre>
 
 						</span>
