@@ -10,6 +10,7 @@
 	<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="js/openclose.js"></script>
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 	<!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -95,12 +96,12 @@
 							<strong class="color1">1. リバースプロキシの基本</strong><br>
 							<p>研究室のサーバ構成は以下のようになっています。クライアントは、ymirにアクセスすることはできますが、wodenに直接アクセスはできません。<br>
 							そのため、クライアントをwoden上で動作しているアプリにアクセスさせるために、ymirのNginxにてリバースプロキシの設定をすることが必要になります。</p>
-							
+
 							<figure><img src="images/introduction_reverse_proxy.png" alt="リバプロ説明"></figure>
 							
 							<p>設定ファイルは以下のように記述します。この場合、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/home"に書き換えられます。</p>
 							
-							<code>
+							<code class="prettyprint">
 								server_name ymir.eng.kagawa-u.ac.jp;<br>
 								location /stumee/ {<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
@@ -113,7 +114,7 @@
 							<strong class="color1">2. 応用設定</strong><br>
 							<p>上記の設定に加え、以下のように設定してすることでより複雑な動作をさせることができます。</p>
 
-							<code>
+							<code class="prettyprint">
 								location /stumee/ {<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host $host; # 説明1 <br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header X-Real-IP $remote_addr; #説明2 <br>
@@ -138,7 +139,7 @@
 							
 							<p>また、以下のように設定することでwebsocketをリバースプロキシさせることができます。</p>
 
-							<code>
+							<code class="prettyprint"> 
 								location /ws/ {<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_http_version 1.1; #デフォルトはHTTP 1.0<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Upgrade $http_upgrade;<br>
@@ -150,7 +151,7 @@
 							<strong class="color1">3. minIOをリバースプロキシさせる</strong><br>
 							<p>minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。</p>
 
-							<code>
+							<code class="prettyprint">
 								location /bucket-name/ {<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host $proxy_host;<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_http_version 1.1;<br>
