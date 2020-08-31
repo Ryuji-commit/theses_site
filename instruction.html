@@ -92,18 +92,73 @@
 					<p>
 						<strong class="color1">nginx リバースプロキシ</strong><br>
 						<span>
+							<strong class="color1">1. リバースプロキシの基本</strong><br>
 							研究室のサーバ構成は以下のようになっています。クライアントは、ymirにアクセスすることはできますが、wodenに直接アクセスはできません。<br>
 							そのため、クライアントをwoden上で動作しているアプリにアクセスさせるために、ymirのNginxにてリバースプロキシの設定をすることが必要になります。
 							<figure><img src="images/introduction_reverse_proxy.png" alt="リバプロ説明"></figure>
 							設定ファイルは以下のように記述します。この場合、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/home"に書き換えられます。<br>
+							
 							<code>
-							server_name ymir.eng.kagawa-u.ac.jp;<br>
-							location /stumee/ {<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
-							} <br>
+								server_name ymir.eng.kagawa-u.ac.jp;<br>
+								location /stumee/ {<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
+								} <br>
 							</code>
+
 							また、アプリURLの末尾にスラッシュをつけなかった場合は、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/stumee/home"に書き換えられます。
-							このように、末尾にスラッシュをつけるか否かで動作が変わってくるので、注意してください。
+							このように、末尾にスラッシュをつけるか否かで動作が変わってくるので、注意してください。<br>
+							
+							<strong class="color1">2. 応用設定</strong><br>
+							<p>上記の設定に加え、以下のように設定してすることでより複雑な動作をさせることができます。</p>
+
+							<code>
+								location /stumee/ {<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host $host; # 説明1 <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header X-Real-IP $remote_addr; #説明2 <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:8000/;   # アプリURL <br>
+								} 
+							</code>
+
+							<p>
+								説明1 : <br>
+								バックエンドサーバー(今回はwoden)に渡すHostヘッダの値を書き換えることができます。<br>
+								・$host : リクエストヘッダのHostが入ります。もしそれが無ければserver_nameが入ります。(この例だと恐らくymir.eng…になる)<br>
+								・$proxy_host : バックエンドサーバのHostが入ります。(今回は133.92…になる)<br>
+								・$http_host : リクエストヘッダのHostが入ります。この変数は推奨されていません。<br>
+							</p>
+
+							<p>
+								説明2 : <br>
+								バックエンドサーバーにクライアントのIPアドレスを渡すことができます。<br>
+								これを設定しない場合、バックエンドサーバーにはymirのIPアドレスが渡ります。<br>
+								<br>
+							</p>
+							
+							<p>また、以下のように設定することでwebsocketをリバースプロキシさせることができます。</p>
+
+							<code>
+								location /ws/ {<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_http_version 1.1; #デフォルトはHTTP 1.0<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Upgrade $http_upgrade;<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Connection "upgrade";<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:9000/;   # アプリURL <br>
+								} 
+							</code>
+
+							<strong class="color1">3. minIOをリバースプロキシさせる</strong><br>
+							<p>minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。</p>
+
+							<code>
+								location /bucket-name/ {<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host $proxy_host;<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_http_version 1.1;<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Connection "";<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;chunked_transfer_encoding off;<br>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:9000/bucket-name/;<br>
+								} 
+							</code>
+
 						</span>
 					</p>
 
