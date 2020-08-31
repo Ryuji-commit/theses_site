@@ -151,7 +151,7 @@
 							<strong class="color1">3. minIOをリバースプロキシさせる</strong><br>
 							<p>minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。</p>
 
-							<pre><code class="prettyprint">
+							<code class="prettyprint">
 								location /bucket-name/ {<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header Host $proxy_host;<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_http_version 1.1;<br>
@@ -160,7 +160,7 @@
 
 								&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://133.92.145.23:9000/bucket-name/;<br>
 								} 
-							</code></pre>
+							</code>
 
 						</span>
 					</p>
