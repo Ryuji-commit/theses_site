@@ -139,11 +139,11 @@ location /stumee/ {
 							<p>また、以下のように設定することでwebsocketをリバースプロキシさせることができます。</p>
 
 <pre class="prettyprint"> 
-location /ws/ {<br>
-	proxy_http_version 1.1; #デフォルトはHTTP 1.0<br>
-	proxy_set_header Upgrade $http_upgrade;<br>
-	proxy_set_header Connection "upgrade";<br>
-	proxy_pass http://133.92.145.23:9000/;   # アプリURL <br>
+location /ws/ {
+	proxy_http_version 1.1; #デフォルトはHTTP 1.0
+	proxy_set_header Upgrade $http_upgrade;
+	proxy_set_header Connection "upgrade";
+	proxy_pass http://133.92.145.23:9000/;   # アプリURL
 } 
 </pre>
 
