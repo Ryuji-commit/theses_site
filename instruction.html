@@ -93,8 +93,9 @@
 						<strong class="color1">nginx リバースプロキシ</strong><br>
 						<span>
 							<strong class="color1">1. リバースプロキシの基本</strong><br>
-							研究室のサーバ構成は以下のようになっています。クライアントは、ymirにアクセスすることはできますが、wodenに直接アクセスはできません。<br>
-							そのため、クライアントをwoden上で動作しているアプリにアクセスさせるために、ymirのNginxにてリバースプロキシの設定をすることが必要になります。
+							<p>研究室のサーバ構成は以下のようになっています。クライアントは、ymirにアクセスすることはできますが、wodenに直接アクセスはできません。<br>
+							そのため、クライアントをwoden上で動作しているアプリにアクセスさせるために、ymirのNginxにてリバースプロキシの設定をすることが必要になります。</p>
+							
 							<figure><img src="images/introduction_reverse_proxy.png" alt="リバプロ説明"></figure>
 							
 							<p>設定ファイルは以下のように記述します。この場合、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/home"に書き換えられます。</p>
