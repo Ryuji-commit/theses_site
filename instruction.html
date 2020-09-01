@@ -101,7 +101,7 @@
 							
 							<p>設定ファイルは以下のように記述します。この場合、"http://ymir.eng.kagawa-u.ac.jp/stumee/home"へのアクセスは"http://133.92.145.23:8000/home"に書き換えられます。</p>
 							
-<pre class="prettyprint linenums">
+<pre class="prettyprint linenums lang-py">
 server_name ymir.eng.kagawa-u.ac.jp;
 location /stumee/ {
 	proxy_pass http://133.92.145.23:8000/;   # アプリURL
@@ -114,7 +114,7 @@ location /stumee/ {
 							<strong class="color1">2. 応用設定</strong><br>
 							<p>上記の設定に加え、以下のように設定してすることでより複雑な動作をさせることができます。</p>
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint linenums lang-py">
 location /stumee/ {
 	proxy_set_header Host $host; # 説明1
 	proxy_set_header X-Real-IP $remote_addr; #説明2
@@ -139,7 +139,7 @@ location /stumee/ {
 							
 							<p>また、以下のように設定することでwebsocketをリバースプロキシさせることができます。</p>
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint linenums lang-py">
 location /ws/ {
 	proxy_http_version 1.1; #デフォルトはHTTP 1.0
 	proxy_set_header Upgrade $http_upgrade;
@@ -151,7 +151,7 @@ location /ws/ {
 							<strong class="color1">3. minIOをリバースプロキシさせる</strong><br>
 							<p>minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。</p>
 
-<pre class="prettyprint linenums">
+<pre class="prettyprint linenums lang-py">
 location /bucket-name/ {
 	proxy_set_header Host $proxy_host;
 	proxy_http_version 1.1;
