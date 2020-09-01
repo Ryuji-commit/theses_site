@@ -166,8 +166,22 @@ location /bucket-name/ {
 					</p>
 
 					<p>
-						<h4 class="color1">Docker</h4><br>
+						<h4 class="color1">sshポートフォワード・vnc</h4><br>
 						<span>
+							<strong class="color1">sshポートフォワード</strong><br>
+							<p>動作確認等で、自宅からwoden上のアプリを操作したい時もあるかもしれません。その時はポートフォワードを使います。<br>
+							基本的にはダイナミックフォワードが便利です。Cygwin等sshが使えるターミナルで実行しましょう。</p>
+<pre class="prettyprint linenums lang-py">
+ssh -D 8010 user@ymir.eng.kagawa-u.ac.jp
+</pre>
+							<p>ダイナミックフォワードは、SSHサーバを介して通信を行うことのできる技術です。この場合、自宅からwodenへのアクセスを、ymirからwodenへのアクセスのように
+								することができます。<br>
+								上のコマンドを実行したら、firefoxを立ち上げて、設定画面からネットワーク設定を開きます。開いたら「手動でプロキシを設定する」のラジオボタンを選択し、<br>
+								「socksホスト」に「localhost」を、「ポート」に「8010」を設定します。<br>
+								その後、firefoxを使ってwoden上のアプリURLにアクセスすると、無事にアクセスできるはずです。
+							</p>
+
+							<strong class="color1">vnc</strong><br>
 							
 						</span>
 					</p>
