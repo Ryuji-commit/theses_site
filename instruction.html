@@ -206,6 +206,32 @@ vncserver -kill :1 #1の部分は確認したサーバIDに書き換える
 						</span>
 					</p>
 
+					<p>
+						<h4 class="color1">Docker</h4><br>
+						<span>
+							<p>
+								<strong class="color1">Docker Compose</strong><br>
+								StuMeeはwoden上のDockerで動いていますが、それぞれのイメージの管理などを行うためのツールとしてdocker-composeを用いています。
+								本来はdocker-composeは開発用のものであり、本番環境では推奨されていないものの、<br>
+								・簡単に複数イメージの管理、コンテナの立ち上げが行える<br>
+								・開発環境もdocker-composeを用いていた<br>
+								・データ永続化が簡単にできる(本当は非推奨)<br>
+								などの理由があり、使用しています。できれば、もっとセキュリティ上良い方法を使ってください。<br>
+								また、もしdocker-composeを使う場合は、ボリュームバインディングを使わないようにしてください。(StuMeeは使ってるけど)
+							</p>
+
+							<p>
+								<strong class="color1">Docker iamge</strong><br>
+								StuMeeの場合は、Docker Hubを利用してアプリケーションのイメージをプッシュし、woden上でpullしてくることでデプロイを行いました。<br>
+								Docker Hubの利用は無料なため、開発環境がDockerの場合はこの方法でデプロイしても良いと思います。ただ、この方法が最適解かどうかは分からないので、
+								より良い方法を知っている場合はそちらをお勧めします。<br>
+								また、この方法でデプロイを行う場合はファイルの変更をイメージに反映させるために、<br>
+								<strong>docker-compose build</strong>コマンドを実行してからプッシュするようにしてください。<br>
+								イメージ自体は、<strong>docker commit "コンテナID" "イメージ名"</strong>で作成できます。
+							</p>
+						</span>
+					</p>
+
 
 				</section>
 
