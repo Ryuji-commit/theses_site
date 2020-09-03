@@ -166,7 +166,7 @@ location /bucket-name/ {
 					</p>
 
 					<p>
-						<h4 class="color1">sshポートフォワード・vnc</h4><br>
+						<h4 class="color1">sshポートフォワード・VNC viewer</h4><br>
 						<span>
 							<strong class="color1">sshポートフォワード</strong><br>
 							<p>動作確認等で、自宅からwoden上のアプリを操作したい時もあるかもしれません。その時はポートフォワードを使います。<br>
@@ -181,8 +181,28 @@ ssh -D 8010 user@ymir.eng.kagawa-u.ac.jp
 								その後、firefoxを使ってwoden上のアプリURLにアクセスすると、無事にアクセスできるはずです。
 							</p>
 
-							<strong class="color1">vnc</strong><br>
-							
+							<strong class="color1">VNC</strong><br>
+							<p>
+								まず、VNCとは
+								こちらの<a href="https://pcmanabu.com/windows-10-vnc/">リンク</a>を参考にして、<strong>UltraVNC Viewer</strong>を窓の杜から
+								ダウンロードします。(Serverの方はダウンロード不要です。) <br>
+								その後、woden上で<strong>vncserver</strong>コマンドを実行します。その時に表示されるサーバIDを覚えておいてください。
+								(もしくは、<strong>vncserver -list</strong>コマンドで確認できます。) <br>
+								VNC serverが立ち上がったら、teratermなどでymirにSSH接続を行い、そこで以下のようにポートフォワードを行います。
+							</p>
+<pre class="prettyprint linenums lang-py">
+ssh -C -N -L 5901:localhost:5901 user@woden.eng.kagawa-u.ac.jp #1の部分は確認したサーバIDに書き換える
+</pre>
+							<p>
+								また、同様にymir上でymir⇒localへのsshポート転送設定を行います。teratermの場合は「設定」→「SSH転送」→「追加」を選択し、「ローカルのポート」と「ポート」それぞれに
+								先ほどの590〇というポートを設定してください。(この例の場合は5901)<br>
+								最後に、先ほどインストールしたVNC Viewerを立ち上げ、computerの欄にlocalhost::590〇と入力してください。(恐らく)wodenのパスワードを入力すると、接続できるはずです。<br>
+								切断するときには以下のコマンドでVNC Serverを終了します。
+							</p>
+<pre class="prettyprint linenums lang-py">
+vncserver -kill :1 #1の部分は確認したサーバIDに書き換える
+</pre>
+
 						</span>
 					</p>
 
