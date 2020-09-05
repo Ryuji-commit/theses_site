@@ -149,7 +149,11 @@ location /ws/ {
 </pre>
 
 							<strong class="color1">3. minIOをリバースプロキシさせる</strong><br>
-							<p>minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。</p>
+							<p>
+								minIOをリバースプロキシさせるためには、以下のようにバケットに対して設定します。<br>
+								ただし、可能であるならばDjango単体で完結させる方がデプロイが簡単です。セキュリティ面ではあまり良くないものの、
+								学内や研究室内で使う分には問題ないでしょう。
+							</p>
 
 <pre class="prettyprint linenums lang-py">
 location /bucket-name/ {
