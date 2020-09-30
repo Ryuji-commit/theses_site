@@ -66,10 +66,10 @@
 							6. ローカルにて<code>docker-compose build</code>を実行し、コードをimage内に含めるようにする<br>
 							7. ローカルにて<code>docker-compose up -d</code>を実行し、コンテナを作成。<br>
 							8. ローカルにて、docker commit を実行し、Docekr Hubにpushする用のimageを作成<br>
-							9. ローカルにて<code>docker push ryuusan/stumee_web:stable</code>を実行し、7で作成したimageをpushする。<br>
+							9. ローカルにて<code>docker push image</code>を実行し、7で作成したimageをpushする。<br>
 							10. sshを用いて本番環境にアクセスする。<br>
 							11. stumeeディレクトリに移動。<br>
-							12. docker-compose.ymlファイルがあることを確認し、<code>docker pull ryuusan/stumee_web:stable</code>を実行。<br>
+							12. docker-compose.ymlファイルがあることを確認し、<code>docker pull image</code>を実行。<br>
 							13. <code>docker-compose up -d</code>コマンドを実行する。<br>
 							14. <code>docker-compose start</code>コマンドを実行し、サービスを稼働させる。<br>
 							15. <code>docker-compose run web ./manage.py migrate</code>を実行する。<br>
