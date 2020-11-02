@@ -236,6 +236,22 @@ vncserver -kill :1 #1の部分は確認したサーバIDに書き換える
 						</span>
 					</p>
 
+					<p>
+						<h4 class="color1">卒論について</h4><br>
+						<span>
+							<p>
+								<strong class="color1">DockerでLatex環境を構築する</strong><br>
+								どうやら、Latexを自分のマシンにインストールするにはめちゃくちゃサイズがでかいファイルをダウンロードしなければならないうえ、
+								数時間もかかるらしいので、Dockerで環境構築を行いました。<br>
+								軽量なDockerイメージを作っている方がいらっしゃったので、それを利用することにします。(ありがたい…！！！)<br>
+								以下のコマンドを実行しましょう。<br>
+								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja platex thesis.tex</code><br>
+								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja dvipdfmx thesis.dvi</code>
+								これで、PDFが出力されるはずです。Latexのことは何もわかっていないので、間違っていたらその都度修正します。
+							</p>
+						</span>
+					</p>
+
 
 				</section>
 
