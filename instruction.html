@@ -246,8 +246,13 @@ vncserver -kill :1 #1の部分は確認したサーバIDに書き換える
 								軽量なDockerイメージを作っている方がいらっしゃったので、それを利用することにします。(ありがたい…！！！)<br>
 								以下のコマンドを実行しましょう。<br>
 								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja platex thesis.tex</code><br>
-								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja dvipdfmx thesis.dvi</code>
-								これで、PDFが出力されるはずです。Latexのことは何もわかっていないので、間違っていたらその都度修正します。
+								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja dvipdfmx thesis.dvi</code><br>
+								これで、PDFが出力されるはずです。Latexのことは何もわかっていないので、間違っていたらその都度修正します。<br>
+								<br>
+								レジュメの場合も同様で、<br>
+								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja platex resume2019.tex</code><br>
+								<code>docker run --rm -v ${PWD}:/workdir paperist/alpine-texlive-ja dvipdfmx resume2019.dvi -o 学籍番号.pdf</code><br>
+								-oオプションを使うことで出力されるファイル名を指定できます。
 							</p>
 						</span>
 					</p>
